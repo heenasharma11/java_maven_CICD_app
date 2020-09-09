@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    stages {
+        stage('Start:"'){
+            steps{
+                echo 'job started sucessfully'
+            }
+        }
+        
+        stage('Checkout code'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c04d8cc3-7d3f-451e-894e-794a06962d59', url: 'https://github.com/heenasharma11/bb-assignment']]])
+            }
+        }
+        
+        stage('verify mvn') {
+                 sh 'mvn --version'
+            }
+        }
+        
+        stage('Build') {
+            steps {dir("https://github.com/heenasharma11/bb-assignment/tree/master/SampleWebApp"){
+                sh 'mvn clean install'
+            }
+            }
+        }
+    }
+    
+    post {
+            success {
+                echo 'this will run if successful' 
+                }
+    }      
+}
