@@ -14,15 +14,19 @@ pipeline {
         }
         
         stage('verify mvn') {
-            steps{
-                 sh 'mvn --version'
-            }}
-        
+            steps {
+               sh 'mvn --version'
+            }
+        }
         
         stage('Build') {
-            steps{
+            steps {
                 sh 'mvn clean install'
-            }}
+                def pom = readMavenPom file:'pom.xml'
+
+                print pom.version
+                env.version = pom.version
+            }
         }
     }
     
