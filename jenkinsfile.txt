@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Start:"'){
-            steps{
-                echo 'job started sucessfully'
-            }
-        }
         
         stage('Checkout code'){
             steps{
@@ -21,7 +16,12 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'mvn clean compile package'
+                sh 'mvn clean compile'
+            }
+        }
+	stage('package') {
+            steps {
+                sh 'mvn package'
             }
         }
     }
