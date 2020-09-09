@@ -14,15 +14,15 @@ pipeline {
         }
         
         stage('verify mvn') {
+            steps{
                  sh 'mvn --version'
-            }
-        }
+            }}
+        
         
         stage('Build') {
-            steps {dir("https://github.com/heenasharma11/bb-assignment/tree/master/SampleWebApp"){
+            steps{
                 sh 'mvn clean install'
-            }
-            }
+            }}
         }
     }
     
