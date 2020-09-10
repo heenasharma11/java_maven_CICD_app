@@ -22,10 +22,19 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.0.0</version>
 				<configuration>
-					<webXml>WebContent\WEB-INF\web.xml</webXml>
+					<webXml>https://github.com/heenasharma11/java_maven_CICD_app/tree/master/WEB-INF</webXml>
 				</configuration>
             </plugin>
     </plugins>
+	
+	<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-war-plugin</artifactId>
+  <version>2.2</version>
+  <configuration>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+  </configuration>
+</plugin>
   </build>
 </project>
 
