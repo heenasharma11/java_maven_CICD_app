@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout code'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/heenasharma11/java_maven_CICD_app']]])
+                git credentialsId: '87e66f55-a6ce-4b0f-a2b0-723d607dc227', url: 'https://github.com/heenasharma11/java_maven_CICD_app.git'
             }
         }
         
@@ -15,7 +15,7 @@ pipeline {
         
         stage('Build') {
            steps {
-				sh '"/usr/share/apache-maven/bin/mvn" -Dmaven.test.failure.ignore clean package'
+				sh 'mvn -Dmaven.test.failure.ignore clean package'
             }
         }
 	stage('package') {
