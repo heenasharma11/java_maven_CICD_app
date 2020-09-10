@@ -14,9 +14,9 @@ pipeline {
         }
         
         stage('Build') {
-            steps {dir("/var/lib/jenkins/workspace/cicd_java_pipeline"){
-                sh 'mvn clean package'
-            }}
+           {
+                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+            }
         }
 	stage('package') {
             steps {
