@@ -23,7 +23,7 @@
                 <version>3.0.0</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<webXml>https://github.com/heenasharma11/java_maven_CICD_app/tree/master/WEB-INF</webXml>
+					<webXml>WebContent\WEB-INF\web.xml</webXml>
 				</configuration>
             </plugin>
     </plugins>
