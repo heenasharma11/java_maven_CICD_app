@@ -10,6 +10,7 @@ pipeline {
         stage('verify mvn') {
             steps {
                sh 'mvn --version'
+			   MVN_HOME = tool 'Maven'
             }
         }
         
