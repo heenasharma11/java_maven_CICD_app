@@ -23,7 +23,7 @@
                 <version>3.0.0</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<webXml>WebContent\WEB-INF\web.xml</webXml>
+					<webXml>WEB-INF/web.xml</webXml>
 				</configuration>
             </plugin>
     </plugins>
