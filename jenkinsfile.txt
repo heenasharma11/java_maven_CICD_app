@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout code'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c04d8cc3-7d3f-451e-894e-794a06962d59', url: 'https://github.com/heenasharma11/bb-assignment']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/heenasharma11/java_maven_CICD_app']]])
             }
         }
         
@@ -14,7 +14,7 @@ pipeline {
         }
         
         stage('Build') {
-            steps {dir("https://github.com/heenasharma11/java_maven_CICD_app"){
+            steps {dir("/var/lib/jenkins/workspace/cicd_java_pipeline"){
                 sh 'mvn clean package'
             }}
         }
