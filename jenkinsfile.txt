@@ -27,7 +27,7 @@ pipeline {
         
         stage('Build') {
             steps {dir("https://github.com/heenasharma11/java_maven_CICD_app"){
-                sh 'mvn clean package
+                sh 'mvn clean package'
             }}
         }
 	stage('package') {
