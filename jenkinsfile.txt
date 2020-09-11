@@ -23,10 +23,16 @@ pipeline {
         }
 		stage('Deploy') {
             steps {
-	    withCredentials([sshUserPrivateKey(credentialsId: 'my-ec2-instance-credentials', keyFileVariable: 'identityFileName', usernameVariable: 'username')])
-	    {
-                sh 'scp -i ${identityFileName} target/java_maven_CICD_app.war ec2-user@3.18.108.104:/home/ec2-user/apache-tomcat-9.0.37/webapps/'
-		}
+	    withCredentials([sshUserPrivateKey(credentialsId: 'my-ec2-instance-credentials', keyFileVariable: 'identityFileName')])
+				{
+					script
+					{
+						def data = readFile(file: identityFileName)
+						writeFile file: 'my-key.pem', text: data
+					}
+					
+					sh 'scp -i my-key.pem target/test.war ec2-user@3.18.108.104:/home/ec2-user/apache-tomcat-9.0.37/webapps/'
+				}
             }
         }	
     }
@@ -36,4 +42,3 @@ pipeline {
                 }
     }      
 }
-// comment
