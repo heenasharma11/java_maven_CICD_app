@@ -23,10 +23,7 @@ pipeline {
         }
 		stage('Deploy') {
             steps {
-	    withCredentials([sshUserPrivateKey(credentialsId: 'my-ec2-instance-credentials', keyFileVariable: 'keyFile')])
-				{
-					sh 'scp -o StrictHostKeyChecking=no -i ${keyFile} target/java_maven_CICD_app.war ec2-user@3.18.108.104:/home/ec2-user/apache-tomcat-9.0.37/webapps/'
-				}
+		echo 'hello world'
             }
         }	
     }
