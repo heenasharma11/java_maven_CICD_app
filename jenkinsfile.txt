@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout code'){
+        stage('Checkout repo code'){
             steps{
                 git credentialsId: '87e66f55-a6ce-4b0f-a2b0-723d607dc227', url: 'https://github.com/heenasharma11/java_maven_CICD_app.git'
             }
